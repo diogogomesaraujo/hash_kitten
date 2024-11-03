@@ -4,7 +4,7 @@ use std::io;
 
 mod funcs;
 
-const HELP: &str = "  ／l、             
+const HELP: &str = "\n  ／l、             
 （ﾟ､ ｡ ７       
   l  ~ヽ       
   じしf_,)ノ\n\n\
@@ -57,7 +57,7 @@ fn main() {
     let flag = &args[1].to_string();
 
     let content:String = match flag.as_str() {
-        "-f" => {
+        "-f" | "--file" => {
             let file_path = &args[2];
 
             match read_file(file_path){
@@ -68,11 +68,11 @@ fn main() {
                 },
             }
         },
-        "-h" =>{
+        "-h" | "--help" =>{
             println!("{}", HELP);
             return;
         },
-        "-c" =>{
+        "-c" | "--compare" =>{
             let message: String = args[2..(args.len() - 1)].join(" ");
             let hash: String = args[args.len() - 1].to_string();
 

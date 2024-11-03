@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "hash_kitten"
+name = "hashkitten"
 version = "0.1.0"
