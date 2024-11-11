@@ -5,10 +5,9 @@ edition = "2021"
 description = "A purrfect hashing companion"
 license = "MIT"
 repository = "https://github.com/diogogomesaraujo/hash_kitten"
-homepage = "https://github.com/diogogomesaraujo/hash_kitten"
-documentation = "https://github.com/diogogomesaraujo/hash_kitten/"
 categories = ["command-line-utilities", "cryptography"]
 keywords = ["hash", "SHA256", "fun", "command-line", "kitten"]
+readme = "README.md"
 
 [dependencies]
 
