@@ -1,9 +1,11 @@
-# Hashkitten 😼
+<img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnByemp3MGJ5YzFhMHJ3djVueGI1cTNwYnFucjI3bWhrYnM2bDB4eiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vKH4mU0p1leRjYRyjx/giphy.webp" alt="Description" width="150">
+
+# hashkitten 🐱
 
 [![Made with Rust](https://img.shields.io/badge/made%20with-Rust-blue.svg)](https://www.rust-lang.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-Hashkitten is a fun command-line tool for hashing text and files.
+`hashkitten` is a fun command-line tool for hashing text and files that I built to learn Rust.
 
 ## Table of Contents
 
@@ -22,7 +24,7 @@ Hashkitten is a fun command-line tool for hashing text and files.
 
 ## Introduction
 
-Hashkitten is your purrfect hashing companion, built with Rust for fast, secure, and delightful hashing of text and files. With `Hashkitten`, you can hash strings or files and compare hashes with a playful touch.
+Hashkitten is your purrfect hashing companion, built with Rust for fast, secure, and delightful hashing of text and files. With `hashkitten`, you can hash strings or files and compare hashes with a playful touch.
 
 ## Features
 
@@ -136,7 +138,9 @@ hashkitten [FLAGS] ["TEXT"]
 
 ## How It Works
 
-Hashkitten uses the SHA-256 hashing algorithm to generate hashes for provided text or file content. The hash is then converted into a fun, purr-styled output using a custom mapping system.
+Hashkitten is a playful tool that uses the robust SHA-256 hashing algorithm to generate secure hashes for your text or file content. But that's not all — `hashkitten` adds a fun twist by converting the hash into a unique, purr-inspired style using a custom mapping system. 🐾✨
+
+Love what `hashkitten` does? Show your support with a ⭐️ and help us make it even better! Got ideas or suggestions? Feel free to open an issue—we'd love to hear from you. Let’s keep those tails wagging! 🐱💻
 
 ## License
 
