@@ -1,4 +1,3 @@
-use std::env;
 use std::fs;
 use std::fs::File;
 use std::io;
@@ -44,9 +43,7 @@ fn read_file(file_path: &String) -> Result<String, io::Error> {
     }
 }
 
-fn main() {
-    let args: Vec<String> = env::args().collect();
-
+pub fn run(args: Vec<String>) {
     if args.len() < 2 {
         eprintln!(
             "*confused meow* No arguments provided! Use `-h` or `--help` for usage instructions."
