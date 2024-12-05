@@ -26,7 +26,7 @@ EXAMPLES\n\
     hashkitten -c \"Hello, world!\" HASH  # Compare the hash of the message with HASH\n\
     hashkitten \"Hello, world!\"          # Hash the given text (must be in quotes)\n";
 
-fn meow_message(message: String) -> String {
+pub fn meow_message(message: String) -> String {
     let message_bytes = funcs::pre_processing(message);
     let message_schedule = funcs::create_message_schedule(message_bytes);
     let hash_values = funcs::compressing_schedule(message_schedule);
