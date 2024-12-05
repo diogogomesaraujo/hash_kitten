@@ -32,6 +32,7 @@
 - Supports hash comparison
 - Easy-to-read help message
 - Outputs fun, purr-styled hashes
+- You can install the rust crate to use it in your code!
 
 ## Installation
 
@@ -136,6 +137,15 @@ hashkitten [FLAGS] ["TEXT"]
 - `-f FILE` | `--file FILE` : Hash the contents of the specified file.
 - `-c "MESSAGE" HASH` | `--compare "MESSAGE" HASH` : Compare the provided message with a given hash.
 
+## Crate
+The hashkitten lib provides these functions:
+- `run` : To handle the terminal args.
+- `meow_message`: To purrfectly hash your message.
+  
+To install the crate run:
+```
+cargo add hashkitten
+```
 ## How It Works
 
 Hashkitten is a playful tool that uses the robust SHA-256 hashing algorithm to generate secure hashes for your text or file content. But that's not all — `hashkitten` adds a fun twist by converting the hash into a unique, purr-inspired style using a custom mapping system. 🐾✨
