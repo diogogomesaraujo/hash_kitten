@@ -44,7 +44,88 @@ fn read_file(file_path: &String) -> Result<String, io::Error> {
     }
 }
 
-pub fn main() {
+pub fn run(args: Vec<String>) {
+    if args.len() < 2 {
+        eprintln!(
+            "*confused meow* No arguments provided! Use `-h` or `--help` for usage instructions."
+        );
+        return;
+    }
+
+    match args.get(1).map(|s| s.as_str()) {
+        Some("-h") | Some("--help") => {
+            println!("{}", HELP);
+        }
+
+        Some("-f") | Some("--file") => {
+            if args.len() < 3 {
+                eprintln!("*confused meow* Missing file path! Use `-f FILE` to specify a file.");
+                return;
+            }
+            let file_path = &args[2];
+            let output = args.get(3).map(String::from);
+            match read_file(file_path) {
+                Ok(contents) => {
+                    let hash = meow_message(contents);
+                    if let Some(output_path) = output {
+                        match File::create(&output_path) {
+                            Ok(mut file) => {
+                                if let Err(e) = file.write_all(hash.as_bytes()) {
+                                    eprintln!(
+                                        "*surprised meow* Failed to write hash to file: {}",
+                                        e
+                                    );
+                                }
+                            }
+                            Err(e) => {
+                                eprintln!("*surprised meow* Failed to create file: {}", e);
+                            }
+                        }
+                    } else {
+                        println!("{}", hash);
+                    }
+                }
+                Err(e) => {
+                    eprintln!("*confused meow* Could not read file: {}", e);
+                }
+            }
+        }
+
+        Some("-c") | Some("--compare") => {
+            if args.len() < 4 {
+                eprintln!("*confused meow* Missing arguments for comparison! Use `-c \"MESSAGE\" HASH` or `-c FILE HASH`.");
+                return;
+            }
+
+            let input = args[2].clone();
+            let hash = args[3].clone();
+
+            let message = match read_file(&input) {
+                Ok(contents) => contents,
+                Err(_) => input,
+            };
+
+            let calculated_hash = meow_message(message);
+
+            if calculated_hash == hash {
+                println!("*excited purrs* Meow meow! The hash matches purrfectly! 🐱✨");
+            } else {
+                println!("*sad meow* The hash doesn't match! 🐱💔");
+            }
+        }
+
+        Some(_) => {
+            let message = args[1..].join(" ");
+            println!("{}", meow_message(message));
+        }
+
+        None => {
+            eprintln!("*confused meow* No valid arguments provided! Use `-h` for help.");
+        }
+    }
+}
+
+fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 2 {
