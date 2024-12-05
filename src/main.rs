@@ -1,14 +1,14 @@
+use std::env;
 use std::fs;
 use std::fs::File;
-use std::env;
 use std::io;
 use std::io::Write;
 
 mod funcs;
 
-const HELP: &str = "\n  ／l、             
-（ﾟ､ ｡ ７       
-  l  ~ヽ       
+const HELP: &str = "\n  ／l、
+（ﾟ､ ｡ ７
+  l  ~ヽ
   じしf_,)ノ\n\n\
 Welcome to hashkitten! 🐾\n\
 Your purrfect hashing companion.\n\n\
@@ -27,7 +27,7 @@ EXAMPLES\n\
     hashkitten -c \"Hello, world!\" HASH  # Compare the hash of the message with HASH\n\
     hashkitten \"Hello, world!\"          # Hash the given text (must be in quotes)\n";
 
-fn meow_message(message: String) -> String{
+fn meow_message(message: String) -> String {
     let message_bytes = funcs::pre_processing(message);
     let message_schedule = funcs::create_message_schedule(message_bytes);
     let hash_values = funcs::compressing_schedule(message_schedule);
@@ -37,20 +37,20 @@ fn meow_message(message: String) -> String{
     meow
 }
 
-fn read_file(file_path: &String) -> Result<String, io::Error>{
-    match fs::read_to_string(file_path){
+fn read_file(file_path: &String) -> Result<String, io::Error> {
+    match fs::read_to_string(file_path) {
         Ok(val) => Ok(val),
-        Err(e) => {
-            Err(e)
-        }
+        Err(e) => Err(e),
     }
 }
 
-fn main() {
+pub fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 2 {
-        eprintln!("*confused meow* No arguments provided! Use `-h` or `--help` for usage instructions.");
+        eprintln!(
+            "*confused meow* No arguments provided! Use `-h` or `--help` for usage instructions."
+        );
         return;
     }
 
@@ -73,7 +73,10 @@ fn main() {
                         match File::create(&output_path) {
                             Ok(mut file) => {
                                 if let Err(e) = file.write_all(hash.as_bytes()) {
-                                    eprintln!("*surprised meow* Failed to write hash to file: {}", e);
+                                    eprintln!(
+                                        "*surprised meow* Failed to write hash to file: {}",
+                                        e
+                                    );
                                 }
                             }
                             Err(e) => {
